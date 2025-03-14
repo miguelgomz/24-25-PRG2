@@ -7,8 +7,13 @@ public class Fraccion {
 
     public Fraccion (int numerador,int denominador){
         assert denominador !=0: "EL denominador no puede ser cero ...Burro";
+        this.mumerador = numerador;
+        this.denominador = denominador;
+
         if(denominador<0){
-            numerador=numerador;
+            numerador= -numerador;
+            denominador= -denominador;
+
         }
 
         this.numerador= numerador;
@@ -37,6 +42,52 @@ public class Fraccion {
         }else{
         return numerador + "\n-\n" + denominador;
         }
+        public Fraccion sumar(Fraccion fraccion){
+        if (this.denominador == fraccion.denominador) {
+            int nuevoNumerador = this.numerador + fraccion.numerador;
+            int nuevoDenominador = this.denominador;
+            return new Fraccion(nuevoNumerador,nuevoDenominador);
+        }else{
+            int nuevoNumerador = this.numerador * fraccion.denominador + fraccion.numerador * this.denominador;
+            int nuevoDenominador = this.denominador * fraccion.denominador;
+            return new Fraccion(nuevoNumerador, nuevoDenominador);
+        }
+    }
+     public Fraccion sumar(int entero){
+        int nuevoNumerador = this.numerador + (entero * this.denominador);
+        int nuevoDenominador = this.denominador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+
+    public Fraccion restar(Fraccion fraccion){
+        if (this.denominador == fraccion.denominador) {
+            int nuevoNumerador = this.numerador - fraccion.numerador;
+            int nuevoDenominador = this.denominador;
+            return new Fraccion(nuevoNumerador,nuevoDenominador);
+        }else{
+            int nuevoNumerador = this.numerador * fraccion.denominador - fraccion.numerador * this.denominador;
+            int nuevoDenominador = this.denominador * fraccion.denominador;
+            return new Fraccion(nuevoNumerador, nuevoDenominador);
+        }
+    }	
+     public Fraccion restar(int entero){
+        int nuevoNumerador = this.numerador - (entero * this.denominador);
+        int nuevoDenominador = this.denominador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+
+    public Fraccion multiplicar(Fraccion fraccion){
+        int nuevoNumerador = this.numerador * fraccion.numerador;
+        int nuevoDenominador = this.denominador * fraccion.denominador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }	
+
+
+
+
+
+
+
     }
     }
 
